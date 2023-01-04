@@ -1,47 +1,35 @@
 #include "main.h"
 
 /**
- * helperfunction - returns 0 or 1
- * @num: number being checked
- * @i: possible factor of the number
+ * get_prime - finds if a number is prime or not
  *
- * Return: 0 if not prime, 1 if prime
+ * @p: number that will be evaluated
+ * @v: variable that will test if @p is prime
+ *
+ * Return: 1 if @p is prime, 0 otherwise
  */
-int helperfunction(int num, int i)
+int get_prime(int v, int p)
 {
-	if (i < num)
-	{
-		if (num % i == 0)
-		{
-			return(0);
-		}
-		else
-		{
-			return (helperfunction(num i + 1));
-		}
-	}
-	else 
-	{
+	if (p == v)
 		return (1);
-	}
+	else if (p % v == 0)
+		return (0);
+	else
+		return (get_prime(v + 1, p));
 }
 
 /**
- * is_prime_number - checks if number is prime or not
- * @n: number to be checked
+ * is_prime_number - tells whether a number is prime or not
  *
- * Return: 1 if number is prime
- * 0 if number is not prime
+ * @n: number to get evaluated
+ *
+ * Return: 1 if @n is prime, 0 otherwise
  */
 int is_prime_number(int n)
 {
-	if (n <= 1)
-	{
+	if (n < 2)
 		return (0);
-	}
-	else
-	{
-		return (helperfunction(n, 2));
-	}
+	if (n == 2)
+		return (1);
+	return (get_prime(2, n));
 }
-
